@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 
 
-function Login() {
+export default function Login() {
     return(
 
         <div>
@@ -48,5 +48,4 @@ function Login() {
     )
 }
 
-export default Login;
 

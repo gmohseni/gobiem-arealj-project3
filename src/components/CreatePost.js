@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 
 
-function CreatePost() {
+export default function CreatePost() {
     return(
 
         <div>
@@ -57,4 +57,3 @@ function CreatePost() {
     )
 }
 
-export default CreatePost;

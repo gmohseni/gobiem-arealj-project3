@@ -7,6 +7,7 @@ import Home from './components/HomePage';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import CreatePost from './components/CreatePost';
+import Threads from './components/Threads';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Route exact path={"/login"} component={Login}/>
       <Route exact path={"/signup"} component={SignUp}/>
       <Route exact path={"/createpost"} component={CreatePost}/>
+      <Route exact path={"/threads"} component={Threads}/>
       <Route render={() => <h1>Not found!</h1>} />
     </Switch>
   </Router>

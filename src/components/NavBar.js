@@ -36,7 +36,11 @@ export default function NavBar() {
                                 <Link to={"/createpost"}>
                                     <a  class="nav-link">CreatePost</a>
                                 </Link>
-    
+                            </li>
+                            <li class="nav-item">
+                                <Link to={"/threads"}>
+                                    <a  class="nav-link">Threads</a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

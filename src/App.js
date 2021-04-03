@@ -1,16 +1,13 @@
-import logo from './logo.svg';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import CreatePost from './components/CreatePost';
+import React from 'react';
 import './App.css';
+import HomePage from './components/HomePage';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      {/* <Login/> */}
-      <CreatePost/>
-    </div>
+    <div>
+        <HomePage/>
+      </div>
   );
 }
 
-export default App;
+

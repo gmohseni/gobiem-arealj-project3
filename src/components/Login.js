@@ -1,10 +1,14 @@
 import React from 'react';
+import NavBar from './NavBar';
 
 
 function Login() {
     return(
 
         <div>
+             <div>
+                <NavBar/>
+            </div>
             <div className="row">
                 <div className ="col-sm-1">
                 </div>

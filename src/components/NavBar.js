@@ -7,39 +7,34 @@ import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
 export default function NavBar() {
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container-fluid">
                 <FontAwesomeIcon icon={faNewspaper} size="2x" />
                     <h2>Hacker News</h2>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
                                 <Link to={"/home"}>
-                                    <a  class="nav-link">Home</a>
+                                    <button  className="nav-link">Home</button>
                                 </Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to={"/login"}>
-                                    <a  class="nav-link">Login</a>
+                                    <button  className="nav-link">Login</button>
                                 </Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to={"/signup"}>
-                                    <a  class="nav-link">SignUp</a>
+                                    <button  className="nav-link">SignUp</button>
                                 </Link>
     
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to={"/createpost"}>
-                                    <a  class="nav-link">CreatePost</a>
-                                </Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link to={"/threads"}>
-                                    <a  class="nav-link">Threads</a>
+                                    <button  className="nav-link">CreatePost</button>
                                 </Link>
                             </li>
                         </ul>

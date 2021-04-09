@@ -2,12 +2,16 @@ import React from 'react';
 import './App.css';
 import HomePage from './components/HomePage';
 
-export default function App() {
+
+const App = () => {
+
   return (
     <div>
-        <HomePage/>
-      </div>
+      <HomePage/>
+    </div>
   );
 }
+
+export default App;
 
 

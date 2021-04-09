@@ -1,13 +1,22 @@
 import React from 'react';
 import NavBar from './NavBar';
+import { useParams } from "react-router-dom";
 
-export default function Post() {
+const Post  = (props) => {
+    var   {  title, message, createdAt } = useParams();
 
     return(
         <div>
-            <h3>Post</h3>
-            <h5>Title</h5>
-            <p>Post Body</p>
+            <div>
+                <NavBar/>
+            </div>
+            <h3>{title}</h3>
+            <h5>{message}</h5>
+            <h5>{createdAt}</h5>
         </div>
         )
     }
+
+export default Post;
+
+

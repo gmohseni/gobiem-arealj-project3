@@ -1,30 +1,24 @@
 import NavBar from './NavBar';
 import React, { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
-
-
 import { createPost } from '../actions/posts';
 
 const CreatePost  = () => {
     const [postData, setPostData] = useState({
         creator: '', title: '', url: '', message: ''
-    
     });
 
 const dispatch = useDispatch();
 const handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log(postData);
     dispatch(createPost(postData));
+    clear();
 }
 
 const clear = () => {
-
+    setPostData({creator: '', title: '', url:'', message: ''});
 }
 
     return(
-
         <div>
             <div>
                 <NavBar/>
@@ -68,12 +62,12 @@ const clear = () => {
             <div className ="col-sm-1"></div>
             <div className="col-sm-10 float-end">
                     <button onClick={() => handleSubmit()}>Submit</button>
+                    <button onClick={() => clear()}>Clear</button>
             </div>
             <div className ="col-sm-1"></div>
         
             </div>
         </div>
-
     )
 }
 

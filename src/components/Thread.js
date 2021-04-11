@@ -1,35 +1,29 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import Post from './Post';
 import {Link} from "react-router-dom";
 
 const Thread  = (props) => {
-
-return(
-    <div>
-        {
-                (props.url === 'N/A') ? 
+    //console.log(props.id);
+    return(
+        <div>
+            {
+                (props.url === 'N/A' || props.url === 'NA' || props.url === '') ? 
                     <div>
-                        <Link to={"/post/" + props.title + "/" + props.message + "/" + props.createdAt}>
-                                {props.title}
-                            </Link>
+                        <Link to={"/post/" + props.title + "/" + props.message + "/" + props.createdAt + "/" + props.id}>
+                            {props.title}
+                        </Link>
                     </div>
                 : 
                 <>
                 {
                     <div>
                         <a href={props.url}>{props.title}</a>
-
                     </div>
-                    
                 }
                 </>
                 }
-        <h5>{props.createdAt}</h5>
-
-    </div>
-
-    )
+            <h5>{props.createdAt}</h5>
+        </div>
+        )
 }
 
 export default Thread;

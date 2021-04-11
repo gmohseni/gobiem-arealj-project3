@@ -30,7 +30,7 @@ ReactDOM.render(
        <Route exact path={"/login"} component={Login}/>
        <Route exact path={"/signup"} component={SignUp}/>
        <Route exact path={"/createpost"} component={CreatePost}/>
-       <Route exact path={"/post/:title/:message/:createdAt"} component={Post}/>
+       <Route exact path={"/post/:title/:message/:createdAt/:id"} component={Post}/>
        <Route render={() => <h1>Not found!</h1>} />
      </Switch>
    </Router>

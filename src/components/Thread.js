@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { getPostById } from '../actions/posts';
 
 const Thread  = (props) => {
+    // const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     dispatch(getPostById(props.id));
+    // }, [dispatch, props.id])
+
+    console.log(props.id);
     return(
         <div>
             {

@@ -10,20 +10,18 @@ const Post  = () => {
     const [commentData, setCommentData] = useState({createdAt: new Date(), message: ''});
     var {  id } = useParams();
     const loginState = useSelector(state => state.login);
-    const [comments, setComments] = useState([]);
-    const [getFlag, setGetFlag] = useState(true);
     const post = useSelector(state => state.post);
 
     const dispatch = useDispatch();
 
-    async function getPost(id) {
-        dispatch(getPostById(id));
-        setComments(post.comments); 
-    }
+    // async function getPost(id) {
+    //     dispatch(getPostById(id));
+    //     setComments(post.comments); 
+    // }
 
     useEffect(() => {
-        getPost();
-    }, [getPost, id])
+        dispatch(getPostById(id));
+    }, [dispatch, id])
 
     const handleComment = () => {
         dispatch(createComment(id, commentData));
@@ -33,6 +31,12 @@ const Post  = () => {
     const clearForm = () => {
         setCommentData({createdAt: new Date(), message: ''});
     }
+
+    // const getComments = () => {
+    //     post.comments.map((comment, i) => {
+    //         return <Comment key={i} message={comment}/>
+    //     })
+    // }
 
     return(
         <div>
@@ -57,8 +61,9 @@ const Post  = () => {
             }
             <div>
                 {
-                    comments.map((comment, i) => {
-                        return <Comment key={i} message={comment}/>
+                    post.comments.map((comment, i) => {
+                        console.log(comment);
+                        // return <Comment key={i} message={comment}/>
                     })
                 }
             </div>

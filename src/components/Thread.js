@@ -2,13 +2,12 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 const Thread  = (props) => {
-    //console.log(props.id);
     return(
         <div>
             {
                 (props.url === 'N/A' || props.url === 'NA' || props.url === '') ? 
                     <div>
-                        <Link to={"/post/" + props.title + "/" + props.message + "/" + props.createdAt + "/" + props.id}>
+                        <Link to={"/post/" + props.id}>
                             {props.title}
                         </Link>
                     </div>

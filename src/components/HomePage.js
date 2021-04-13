@@ -6,12 +6,11 @@ import ThreadsList from './ThreadsList';
 
 
 const HomePage  = () => {
-  const [rerenderFlag, setRerenderFlag] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch, rerenderFlag]);
+  }, [dispatch]);
 
     return (
         <div>
@@ -19,7 +18,7 @@ const HomePage  = () => {
                 <NavBar/>
             </div>
             <h3>Recent News</h3>
-            <ThreadsList rerenderFlag={rerenderFlag} setRerenderFlag={setRerenderFlag}/>
+            <ThreadsList/>
         </div>
     )
 }

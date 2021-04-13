@@ -21,8 +21,6 @@ const CreatePost  = () => {
     }, [id, post]);
 
     const handleSubmit = (e) => {
-        console.log(id);
-        console.log(postData);
         if (id !== undefined){
             dispatch(updatePost(id, postData));
         }

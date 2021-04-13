@@ -1,21 +1,14 @@
 import NavBar from './NavBar';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost } from '../actions/posts';
+import { createPost, updatePost } from '../actions/posts';
 import { useParams } from "react-router-dom";
-import { updatePost } from '../api';
 
 
 const CreatePost  = () => {
-    const [postData, setPostData] = useState({
-        creator: '', title: '', url: '', message: ''
-    });
-
+    const [postData, setPostData] = useState({creator: '', title: '', url: '', message: ''});
     var {id} = useParams();
-
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
-
-   
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +24,7 @@ const CreatePost  = () => {
         console.log(id);
         console.log(postData);
         if (id !== undefined){
-            dispatch(updatePost(id,postData));
+            dispatch(updatePost(id, postData));
         }
         else if (id === undefined){
             dispatch(createPost(postData));

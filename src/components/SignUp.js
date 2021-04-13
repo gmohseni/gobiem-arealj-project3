@@ -1,8 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
 import NavBar from './NavBar';
 
 
 export default function SignUp() {
+    const [username, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
+
+    console.log(username);
+    console.log(password);
+
+    const handleSignUp = () => {
+        //dispatch(signUp(username, password));
+        clearForm();
+    }
+
+    const clearForm = () => {
+        setUserName("");
+        setPassword("");
+    }
+
     return(
 
         <div>
@@ -21,8 +40,10 @@ export default function SignUp() {
             <div className ="col-sm-1">
                 </div>
                 <div className="col-sm-10">
-                    <label htmlFor="Username">UserName</label>
-                    <input id="Username" type="text" placeholder="UserName"></input>
+                    <label htmlFor="username">UserName</label>
+                    <input id="username" type="text" placeholder="UserName"
+                    value={username} 
+                    onChange={e => setUserName(e.target.value)}/>
                 </div>
                 <div className ="col-sm-1"></div>
             </div>
@@ -30,15 +51,17 @@ export default function SignUp() {
             <div className ="col-sm-1">
                 </div>
                 <div className="col-sm-10">
-                    <label htmlFor="Password">Password</label>
-                    <input id="Password" type="text" placeholder="Password"></input>
+                    <label htmlFor="password">Password</label>
+                    <input id="password" type="text" placeholder="Password"
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <div className ="col-sm-1"></div>
             </div>
             <div className="row">
             <div className ="col-sm-1"></div>
             <div className="col-sm-10 float-end">
-                    <button>Submit</button>
+                    <button onClick={() => handleSignUp()}>Submit</button>
             </div>
             <div className ="col-sm-1"></div>
         

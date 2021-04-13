@@ -4,18 +4,14 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import HomePage from './components/HomePage';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-
-
 import thunk from 'redux-thunk';
-
 import reducers from './reducers';
 
 const store = createStore(reducers, applyMiddleware(thunk));

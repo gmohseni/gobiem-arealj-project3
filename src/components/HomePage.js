@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import NavBar from './NavBar';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../actions/posts';
@@ -6,11 +6,12 @@ import ThreadsList from './ThreadsList';
 
 
 const HomePage  = () => {
+  const [rerenderFlag, setRerenderFlag] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [dispatch, rerenderFlag]);
 
     return (
         <div>
@@ -18,7 +19,7 @@ const HomePage  = () => {
                 <NavBar/>
             </div>
             <h3>Recent News</h3>
-            <ThreadsList/>
+            <ThreadsList rerenderFlag={rerenderFlag} setRerenderFlag={setRerenderFlag}/>
         </div>
     )
 }

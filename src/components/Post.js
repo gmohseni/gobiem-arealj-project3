@@ -22,6 +22,9 @@ const Post  = () => {
             <Link to={"/home"}>
                 <button onClick={() => dispatch(deletePost(id))}>Delete</button>
             </Link>
+            <Link to={"/updatepost/" + id}>
+                <button>Update</button>
+            </Link>
         </div>
         )
     }

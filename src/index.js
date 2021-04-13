@@ -18,7 +18,7 @@ import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -30,6 +30,7 @@ ReactDOM.render(
        <Route exact path={"/login"} component={Login}/>
        <Route exact path={"/signup"} component={SignUp}/>
        <Route exact path={"/createpost"} component={CreatePost}/>
+       <Route exact path={"/updatepost/:id"} component={CreatePost}/>
        <Route exact path={"/post/:title/:message/:createdAt/:id"} component={Post}/>
        <Route render={() => <h1>Not found!</h1>} />
      </Switch>

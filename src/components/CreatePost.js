@@ -1,22 +1,50 @@
 import NavBar from './NavBar';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from '../actions/posts';
+import { useParams } from "react-router-dom";
+import { updatePost } from '../api';
+
 
 const CreatePost  = () => {
     const [postData, setPostData] = useState({
         creator: '', title: '', url: '', message: ''
     });
 
-const dispatch = useDispatch();
-const handleSubmit = (e) => {
-    dispatch(createPost(postData));
-    clear();
-}
+    var {id} = useParams();
 
-const clear = () => {
-    setPostData({creator: '', title: '', url:'', message: ''});
-}
+    const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
+
+   
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (id === undefined){
+            clear();
+        }
+        else if (post) {
+            setPostData(post);
+        }
+    }, [id, post]);
+
+    const handleSubmit = (e) => {
+        console.log(id);
+        console.log(postData);
+        if (id !== undefined){
+            dispatch(updatePost(id,postData));
+        }
+        else if (id === undefined){
+            dispatch(createPost(postData));
+        }
+    
+        clear();
+    }
+
+    const clear = () => {
+        setPostData({creator: '', title: '', url:'', message: ''});
+    }
+
+   
 
     return(
         <div>
@@ -27,7 +55,7 @@ const clear = () => {
                 <div className ="col-sm-1">
                 </div>
                 <div className="col-sm-10">
-                    <h3>Create a new post</h3>
+                    <h3>{id ? 'Updating a': 'Creating a new'} post</h3>
                 </div>
                 <div className ="col-sm-1"></div>
             </div>

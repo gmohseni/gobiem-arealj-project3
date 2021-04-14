@@ -1,16 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import { getPostById } from '../actions/posts';
 
 const Thread  = (props) => {
-    // const dispatch = useDispatch();
+    
+    const openInNewTab = () => {
+        const newWindow = window.open(props.url, '_blank', 'noopener,noreferrer');
+        if(newWindow) newWindow.opener = null;
+    }
 
-    // useEffect(() => {
-    //     dispatch(getPostById(props.id));
-    // }, [dispatch, props.id])
-
-    console.log(props.id);
     return(
         <div>
             {
@@ -24,7 +21,9 @@ const Thread  = (props) => {
                 <>
                 {
                     <div>
-                        <a href={props.url}>{props.title}</a>
+                        <Link to={"/post/" + props.id}>
+                            <span onClick={() => openInNewTab()}>{props.title}</span>
+                        </Link>
                     </div>
                 }
                 </>

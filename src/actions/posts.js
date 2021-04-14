@@ -59,6 +59,7 @@ export const deletePost = (id) => async (dispatch) => {
 export const createComment = (id, comment) => async (dispatch) =>{
     try{
         const { data } = await api.createComment(id, comment);
+        console.log(data);
         dispatch({type: 'CREATE_COMMENT', payload: data});
     } catch (error){
         console.log(error);

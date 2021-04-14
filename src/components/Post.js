@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import NavBar from './NavBar';
 import Comment from './Comment';
-import { getPostById, createComment } from '../actions/posts';
+import { createComment, getPosts } from '../actions/posts';
 import { useParams } from "react-router-dom";
 import { LOGIN_STATE } from '../reducers/storeConstants';
 
@@ -10,33 +10,20 @@ const Post  = () => {
     const [commentData, setCommentData] = useState({createdAt: new Date(), message: ''});
     var {  id } = useParams();
     const loginState = useSelector(state => state.login);
-    const post = useSelector(state => state.post);
+    const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
+    const comments = post.comments;
 
     const dispatch = useDispatch();
 
-    // async function getPost(id) {
-    //     dispatch(getPostById(id));
-    //     setComments(post.comments); 
-    // }
-
-    useEffect(() => {
-        dispatch(getPostById(id));
-    }, [dispatch, id])
-
     const handleComment = () => {
         dispatch(createComment(id, commentData));
+        dispatch(getPosts());
         clearForm();
     }
 
     const clearForm = () => {
         setCommentData({createdAt: new Date(), message: ''});
     }
-
-    // const getComments = () => {
-    //     post.comments.map((comment, i) => {
-    //         return <Comment key={i} message={comment}/>
-    //     })
-    // }
 
     return(
         <div>
@@ -61,9 +48,10 @@ const Post  = () => {
             }
             <div>
                 {
-                    post.comments.map((comment, i) => {
-                        console.log(comment);
-                        // return <Comment key={i} message={comment}/>
+                    comments.map((comment, i) => {
+                        return <div key={i} className="py-2">
+                                <Comment message={comment.message} createdAt={comment.createdAt}/>
+                            </div>
                     })
                 }
             </div>

@@ -2,9 +2,9 @@ import React from 'react';
 
 const Comment = (props) => {
     return(
-        <div>
-            {/* <h3>{props.author}</h3> */}
-            <h5>{props.message}</h5>
+        <div className="card py-2 text-center" style={{height: "100px"}}>
+            <p>{props.createdAt}</p>
+            <p>{props.message}</p>
         </div>
         )
     }

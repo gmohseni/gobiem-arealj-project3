@@ -3,7 +3,7 @@ const Post = (post = {}, action) => {
         case 'FETCH_BY_ID':
             return action.payload;
         case 'CREATE_COMMENT':
-            return post.comments.push(action.payload);
+            return action.payload;
         default:
             return post;
     }

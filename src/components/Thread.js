@@ -1,9 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+
 const Thread  = (props) => {
+
     
+
     const openInNewTab = () => {
+        
         const newWindow = window.open(props.url, '_blank', 'noopener,noreferrer');
         if(newWindow) newWindow.opener = null;
     }

@@ -29,6 +29,7 @@ ReactDOM.render(
        <Route exact path={"/createpost"} component={CreatePost}/>
        <Route exact path={"/updatepost/:id"} component={CreatePost}/>
        <Route exact path={"/post/:id"} component={Post}/>
+       <Route exact path={"/post/:id/:commentId"} component={Post}/>
        <Route render={() => <h1>Not found!</h1>} />
      </Switch>
    </Router>

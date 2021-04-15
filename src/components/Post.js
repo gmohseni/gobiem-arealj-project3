@@ -13,6 +13,7 @@ const Post  = () => {
     var {  id } = useParams();
     const loginState = useSelector(state => state.login);
     // const posts = useSelector(state => state.posts);
+    const test = useSelector(state => state);
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
     
     const [comments, setComments] = useState([]);
@@ -21,23 +22,25 @@ const Post  = () => {
 
     
 
+    useEffect(() =>{
+        dispatch(getPostById(id));
+        
+        
+    },[])
+
     useEffect(() => {
-        // console.log(post);
         if (post !== undefined){
         setPostData(post);
         setComments(post.comments);
         
         }
     dispatch(getPostById(id));
-    setPostData(post);
-    setComments(post.comments);
+    //setPostData(post);
+    //setComments(post.comments);
         
-    }, [post, id]);
+    }, [post]);
 
-    useEffect(() =>{
-        // console.log(post);
-        
-    },[post])
+    
 
     const handleComment = () => {
         dispatch(createComment(id, commentData));

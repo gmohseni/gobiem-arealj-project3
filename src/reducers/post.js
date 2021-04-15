@@ -2,6 +2,9 @@ const Post = (post = {},  action) => {
     switch(action.type){
         case 'FETCH_BY_ID':
             return action.payload;
+        case 'FETCH_COMMENT_ID':
+            console.log(action.payload);
+            return action.payload;
         // return {...post, id: action.payload.id, title: action.payload.title, createdAt:action.payload.createdAt, message: action.payload.message, comments: action.payload.comments };
         case 'CREATE_COMMENT':
             // return post.comments.push(action.payload);
@@ -24,11 +27,13 @@ const Post = (post = {},  action) => {
             // return {...post, payload: };
             
             const newArray = post.comments.filter((comment) => {
-                console.log(comment);
+                // console.log("then this");
+                // console.log(comment.id);
                 // console.log(action.payload);
+                // console.log('last');
                 return comment.id != action.payload});
             
-            console.log(newArray);
+            // console.log(newArray);
             
             
            

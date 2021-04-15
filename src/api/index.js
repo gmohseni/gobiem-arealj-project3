@@ -5,8 +5,10 @@ const postUrl = 'http://localhost:8000/post';
 
 export const fetchPost = () => axios.get(postUrl);
 export const fetchPostById = (id) => axios.get(`${postUrl}/${id}`);
+// export const fetchCommentById = (id, commentId) => axios.get(`${postUrl}/${id}/${commentId}`);
+
 export const createPost = (newPost) => axios.post(postUrl, newPost);
 export const createComment = (id, newComment) => axios.post(`${postUrl}/${id}`, newComment);
 export const deletePost = (id) => axios.delete(`${postUrl}/${id}`);
 export const updatePost = (id, post) => axios.patch(`${postUrl}/${id}`, post);
-export const deleteComment = (postId) => axios.patch(`${postUrl}/${postId}`);
+export const deleteComment = (postId) => axios.delete(`${postUrl}/${postId}`);

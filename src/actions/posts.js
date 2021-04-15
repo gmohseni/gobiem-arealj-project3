@@ -16,6 +16,7 @@ export const getPosts = () => async (dispatch) => {
 export const getPostById = (id) => async (dispatch) => {
     try{
         const { data } = await api.fetchPostById(id);
+        
         dispatch({ type: 'FETCH_BY_ID', payload: data});
     } catch (error){
         console.log(error.message);
@@ -34,8 +35,6 @@ export const createPost = (post) => async (dispatch) =>{
 }
 
 export const updatePost = (id, post) => async (dispatch) =>{
-    console.log(id);
-    console.log(post);
     try{
         const { data } = await api.updatePost(id, post);
         dispatch({type: 'UPDATE', payload: data});
@@ -44,6 +43,7 @@ export const updatePost = (id, post) => async (dispatch) =>{
         
     }
 }
+
 
 export const deletePost = (id) => async (dispatch) => {
     // console.log(id);
@@ -62,21 +62,49 @@ export const deleteComment = (id, commentId) => async (dispatch) => {
     try {
         // console.log(id);
         // console.log(commentId);
-        await api.deleteComment(id, commentId);
+        const { data } = await api.deleteComment(id, commentId);
+        // console.log(commentId);
+        // console.log("this first");
+        console.log(data);
         dispatch({type: 'DELETE_COMMENT', payload:{id: commentId}});
+        
     } catch (error) {
         console.log(error);
     }
 }
+
+// export const getCommentById = (id, commentId) => async (dispatch) => {
+//     try{
+        
+//         const { data } = await api.fetchCommentById(commentId);
+        
+//         dispatch({ type: 'FETCH_COMMENT_ID', payload:data});
+//     } catch (error){
+       
+//         console.log(error.message);
+
+//     }
+// }
+
+// export const getPostById = (id) => async (dispatch) => {
+//     try{
+//         const { data } = await api.fetchPostById(id);
+//         dispatch({ type: 'FETCH_BY_ID', payload: data});
+//     } catch (error){
+//         console.log(error.message);
+
+//     }
+// }
 
 
 
 export const createComment = (id, comment) => async (dispatch) =>{
     try{
         const { data } = await api.createComment(id, comment);
-        // console.log(data);
+        
+        
         dispatch({type: 'CREATE_COMMENT', payload: data});
-        // console.log(data);
+        
     } catch (error){
         console.log(error);
         

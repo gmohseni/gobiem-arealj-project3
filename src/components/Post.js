@@ -21,9 +21,8 @@ const Post  = () => {
 
     
 
-   
-
     useEffect(() => {
+        // console.log(post);
         if (post !== undefined){
         setPostData(post);
         setComments(post.comments);
@@ -34,6 +33,11 @@ const Post  = () => {
     setComments(post.comments);
         
     }, [post, id]);
+
+    useEffect(() =>{
+        // console.log(post);
+        
+    },[post])
 
     const handleComment = () => {
         dispatch(createComment(id, commentData));

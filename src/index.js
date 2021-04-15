@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware, compose} from 'redux';
 import HomePage from './components/HomePage';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
@@ -14,7 +14,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

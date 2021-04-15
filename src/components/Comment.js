@@ -7,6 +7,8 @@ const Comment = (props) => {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
+        // console.log(props.postId);
+        // console.log(props.commentId);
         dispatch(deleteComment(props.postId, props.commentId));
     }
 

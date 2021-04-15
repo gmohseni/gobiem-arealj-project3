@@ -46,7 +46,7 @@ export const updatePost = (id, post) => async (dispatch) =>{
 }
 
 export const deletePost = (id) => async (dispatch) => {
-    console.log(id);
+    // console.log(id);
     try {
         await api.deletePost(id);
 
@@ -57,12 +57,13 @@ export const deletePost = (id) => async (dispatch) => {
 }
 
 export const deleteComment = (id, commentId) => async (dispatch) => {
-    console.log(id);
-    // console.log(commentId);
-    try {
-        await api.deleteComment(id, commentId);
+    // id --> post and commentId --> commentId
 
-        dispatch({type: 'DELETE_COMMENT'});
+    try {
+        // console.log(id);
+        // console.log(commentId);
+        await api.deleteComment(id, commentId);
+        dispatch({type: 'DELETE_COMMENT', payload:{id: commentId}});
     } catch (error) {
         console.log(error);
     }
@@ -73,8 +74,9 @@ export const deleteComment = (id, commentId) => async (dispatch) => {
 export const createComment = (id, comment) => async (dispatch) =>{
     try{
         const { data } = await api.createComment(id, comment);
-        console.log(data);
+        // console.log(data);
         dispatch({type: 'CREATE_COMMENT', payload: data});
+        // console.log(data);
     } catch (error){
         console.log(error);
         

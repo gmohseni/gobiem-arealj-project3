@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 
 const CreatePost  = () => {
-    const [postData, setPostData] = useState({creator: '', title: '', url: '', message: ''});
+    const [postData, setPostData] = useState({title: '', url: '', message: ''});
     var {id} = useParams();
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
     const dispatch = useDispatch();

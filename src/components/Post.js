@@ -9,6 +9,7 @@ import { LOGIN_STATE } from '../reducers/storeConstants';
 const Post  = () => {
     const [commentData, setCommentData] = useState({createdAt: new Date(), message: ''});
     const [postData, setPostData] = useState({title: '', url: '', message: '', comments: []});
+    const [updatePostFlag, setUpdatePostFlag] = useState(false);
     var {  id } = useParams();
     const loginState = useSelector(state => state.login);
     
@@ -30,11 +31,14 @@ const Post  = () => {
         }
     }, [post]);
 
-    // useEffect(() => {
-    //     if (postData) {
-    //         dispatch(updatePost(id, postData));
-    //     }
-    // }, [dispatch, postData, id]);
+    useEffect(() => {
+        if (updatePostFlag) {
+            if (postData) {
+                setUpdatePostFlag(false);
+                dispatch(updatePost(id, postData));
+            }
+        }
+    }, [dispatch, postData, id, updatePostFlag]);
 
     
     const handleComment = () => {
@@ -76,7 +80,7 @@ const Post  = () => {
                 {
                     comments.map((comment, i) => {
                         return <div key={i} className="py-2">
-                                <Comment message={comment.message} createdAt={comment.createdAt} postId={id} commentId={comment.id} postData={postData} setPostData={setPostData}/>
+                                <Comment message={comment.message} createdAt={comment.createdAt} postId={id} commentId={comment.id} postData={postData} setPostData={setPostData} setUpdatePostFlag={setUpdatePostFlag}/>
                             </div>
                     })
                 }

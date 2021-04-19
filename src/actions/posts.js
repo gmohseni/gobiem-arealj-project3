@@ -75,18 +75,7 @@ export const deleteComment = (id, commentId) => async (dispatch) => {
     }
 }
 
-// export const getCommentById = (id, commentId) => async (dispatch) => {
-//     try{
-        
-//         const { data } = await api.fetchCommentById(commentId);
-        
-//         dispatch({ type: 'FETCH_COMMENT_ID', payload:data});
-//     } catch (error){
-       
-//         console.log(error.message);
 
-//     }
-// }
 
 // export const getPostById = (id) => async (dispatch) => {
 //     try{

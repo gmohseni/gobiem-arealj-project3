@@ -10,6 +10,7 @@ const CreatePost  = () => {
     var {id} = useParams();
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     useEffect(() => {
         if (id === undefined){
@@ -25,14 +26,14 @@ const CreatePost  = () => {
             dispatch(updatePost(id, postData));
         }
         else if (id === undefined){
-            dispatch(createPost(postData));
+            dispatch(createPost({...postData,username: user?.result?.username}));
         }
     
         clear();
     }
 
     const clear = () => {
-        setPostData({creator: '', title: '', url:'', message: ''});
+        setPostData({title: '', url:'', message: ''});
     }
 
    

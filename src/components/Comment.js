@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const Comment = (props) => {
     const [updatedMessage, setUpdatedMessage] = useState(props.message);
     const [showTextBox, setShowTextBox] = useState(false);
-
+    const user = JSON.parse(localStorage.getItem('profile'));
     const handleDelete = () => {
         let newArray = [];
         for (let i = 0; i < props.postData.comments.length; i++) {
@@ -32,7 +32,7 @@ const Comment = (props) => {
         props.setUpdatePostFlag(true);
         props.setPostData({creator: props.postData.creator, title: props.postData.title, url: props.postData.url, message: props.postData.message, comments: newArray});
     }
-
+    console.log(props.postData.username);
 
     return(
         <div className="py-5">
@@ -54,8 +54,12 @@ const Comment = (props) => {
                         </>
                     }
                 </div>
+                {(user?.result?.username === props.postData?.username) && (
                 <button onClick={() => handleDelete()}>Delete</button>
+                )}
+                 {(user?.result?.username === props.postData?.username) && (
                 <button onClick={() => handleUpdate()}>Update</button>
+                 )}
             </div>
         </div>
         )

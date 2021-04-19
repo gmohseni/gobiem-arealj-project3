@@ -6,6 +6,8 @@ import ThreadsList from './ThreadsList';
 
 
 const HomePage  = () => {
+  // current id?
+  // const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {

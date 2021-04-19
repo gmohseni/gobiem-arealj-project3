@@ -17,6 +17,7 @@ const Post  = () => {
     const [comments, setComments] = useState([]);
 
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     
 
@@ -25,6 +26,8 @@ const Post  = () => {
     },[dispatch, id])
 
     useEffect(() => {
+        // e.preventDefault();
+
         if (post !== undefined){
             setPostData(post);
             setComments(post.comments);
@@ -32,16 +35,18 @@ const Post  = () => {
     }, [post]);
 
     useEffect(() => {
+        
         if (updatePostFlag) {
             if (postData) {
                 setUpdatePostFlag(false);
-                dispatch(updatePost(id, postData));
+                dispatch(updatePost(id, {...postData, name:user?.result?.name}));
             }
         }
     }, [dispatch, postData, id, updatePostFlag]);
 
     
     const handleComment = () => {
+      
         dispatch(createComment(id, commentData));
         dispatch(getPosts());
         clearForm();
@@ -55,6 +60,13 @@ const Post  = () => {
         setCommentData({createdAt: new Date(), message: ''});
     }
 
+    // if (!user?.result?.name){
+    //     return(
+    //         <div>
+    //             <h5>Please sign in to create a post</h5>
+    //         </div>
+    //     )
+    // }
     return(
         <div>
             <div>
@@ -70,7 +82,7 @@ const Post  = () => {
                     <input id="comment" type="text" placeholder="" 
                     value={commentData.message} 
                     onChange={(e) => setCommentData({ ...commentData, message: e.target.value })}/>
-                    <button onClick={() => handleComment()}>Add Comment</button>
+                    <button disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
                 </div>
                 :
                 <>

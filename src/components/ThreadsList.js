@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Link} from "react-router-dom";
 import { deletePost, getPosts } from '../actions/posts';
@@ -7,6 +7,7 @@ import Thread from './Thread';
 const ThreadsList  = (props) => {
     const posts = useSelector((state) => state.posts);
     const user = JSON.parse(localStorage.getItem('profile'));
+    const [sortedPosts, setSortedPosts] = useState([]);
     const dispatch = useDispatch();
 
     const handleClick = (id) => {
@@ -14,12 +15,24 @@ const ThreadsList  = (props) => {
         dispatch(getPosts());
     }
 
+const sortPostDate = () =>{
+    let postCopy = posts;
+    let sorted = postCopy.sort((a,b) => Date.parse(new Date(b.createdAt)) - Date.parse(new Date(a.createdAt)));
+    setSortedPosts(sorted);
+}
+
+useEffect(() =>{
+    if (posts){
+        sortPostDate();
+    }
+
+},[sortPostDate])
 
 
     return(
         <div>
             {
-                posts.map((post,i) => {
+                sortedPosts.map((post,i) => {
                     return <div key={i}>
                         <Thread title={post.title} id={post._id} url={post.url} createdAt={post.createdAt}/>
                         

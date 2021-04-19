@@ -5,6 +5,7 @@ import Comment from './Comment';
 import { createComment, getPostById, getPosts, updatePost } from '../actions/posts';
 import { useParams } from "react-router-dom";
 import { LOGIN_STATE } from '../reducers/storeConstants';
+import { useHistory } from 'react-router-dom';
 
 const Post  = () => {
     const [commentData, setCommentData] = useState({createdAt: new Date(), message: '', username:''});
@@ -15,11 +16,12 @@ const Post  = () => {
     
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
     const [comments, setComments] = useState([]);
+    const history = useHistory();
 
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
-    console.log(post);
+   
 
     useEffect(() =>{
         dispatch(getPostById(id));
@@ -28,7 +30,11 @@ const Post  = () => {
     useEffect(() => {
         if (post !== undefined){
             setPostData(post);
-            setComments(post.comments);
+            let sorted = post.comments.sort((a,b) => Date.parse(new Date(a.createdAt)) - Date.parse(new Date(b.createdAt)));
+            setComments(sorted); 
+        }
+        else{
+            history.push("/");
         }
     }, [post]);
 
@@ -47,22 +53,12 @@ const Post  = () => {
         dispatch(getPosts());
         clearForm();
     }
-    // const onChangeHandler = (e) =>{
-    //     setCurrentComment({...currentComment, message: e.target.value});
-
-    // }
+   
 
     const clearForm = () => {
         setCommentData({createdAt: new Date(), message: '', username: ''});
     }
-
-    // if (!user?.result?.name){
-    //     return(
-    //         <div>
-    //             <h5>Please sign in to create a post</h5>
-    //         </div>
-    //     )
-    // }
+   
     return(
         <div>
             <div>

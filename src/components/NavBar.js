@@ -138,6 +138,10 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <button className="nav-link" onClick={() => logout()}>Logout</button>
                             </li>
+
+                            <li className="nav-item">
+                                {user?.result?.username}
+                            </li>
                         </ul>
                             ):(
                                 <>

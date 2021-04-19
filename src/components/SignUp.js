@@ -85,19 +85,24 @@ export default function SignUp() {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState(initialState);
     const [showPassword, setShowPassword] = useState(false);
-
-    // console.log(username);
-    // console.log(password);
+    const [showError, setShowError] = useState(false);
+   
 
     const handleSubmit = () => {
-        dispatch(signup(formData, history));
+
+        if ((formData.username.length !== 0) && (formData.password.length !== 0)){
+            dispatch(signup(formData, history));
+        }
+        else{
+            setShowError(true);
+
+        }
+        
     }
 
     const onChange = (e) =>{
 
         setFormData({...formData, [e.target.id]: e.target.value});
-        console.log(e.target.value);
-        console.log(setFormData);
 
     };
 
@@ -115,6 +120,15 @@ export default function SignUp() {
                     <h3>Create Account</h3>
                 </div>
                 <div className ="col-sm-1"></div>
+            </div>
+            <div>
+                {
+                    (showError) ? 
+                    <div>Please add username and password</div>
+                    :
+                    <>
+                    </>
+                }
             </div>
             <div className="row">
             <div className ="col-sm-1">

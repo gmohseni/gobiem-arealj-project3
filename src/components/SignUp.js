@@ -84,6 +84,7 @@ export default function SignUp() {
     // const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
     const [formData, setFormData] = useState(initialState);
+    const [showPassword, setShowPassword] = useState(false);
 
     // console.log(username);
     // console.log(password);
@@ -131,9 +132,10 @@ export default function SignUp() {
                 </div>
                 <div className="col-sm-10">
                     <label htmlFor="password">Password</label>
-                    <input id="password" type="object" placeholder="password"
-                  
+                    <input id="password" type={!showPassword ? "password" : "text"} placeholder="password"
+
                     onChange={onChange}/>
+                    <button onClick={() => setShowPassword(!showPassword)}>Show Password</button>
                 </div>
                 <div className ="col-sm-1"></div>
             </div>

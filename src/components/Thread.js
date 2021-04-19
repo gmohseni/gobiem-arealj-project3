@@ -5,15 +5,10 @@ import {Link} from "react-router-dom";
 const Thread  = (props) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
-
-    
-
     const openInNewTab = () => {
-        
         const newWindow = window.open(props.url, '_blank', 'noopener,noreferrer');
         if(newWindow) newWindow.opener = null;
     }
-
 
     return(
         <div>
@@ -36,6 +31,9 @@ const Thread  = (props) => {
                 </>
                 }
             <h5>{props.createdAt}</h5>
+            <div>
+                <Link to={"/post/" + props.id}>Comments</Link>
+            </div>
         </div>
         )
 }

@@ -19,15 +19,13 @@ const Post  = () => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
-    console.log(user);
+    console.log(post);
 
     useEffect(() =>{
         dispatch(getPostById(id));
     },[dispatch, id])
 
     useEffect(() => {
-        // e.preventDefault();
-
         if (post !== undefined){
             setPostData(post);
             setComments(post.comments);
@@ -35,19 +33,16 @@ const Post  = () => {
     }, [post]);
 
     useEffect(() => {
-        
         if (updatePostFlag) {
             if (postData) {
                 setUpdatePostFlag(false);
                 dispatch(updatePost(id, {...postData, name:user?.result?.name}));
-                // console.log(username);
             }
         }
-    }, [dispatch, postData, id, updatePostFlag]);
+    }, [dispatch, postData, id, updatePostFlag, user?.result?.name]);
 
     
     const handleComment = () => {
-      
         dispatch(createComment(id, {...commentData, username:user?.result?.username}));
         dispatch(getPosts());
         clearForm();

@@ -32,8 +32,8 @@ const Comment = (props) => {
         props.setUpdatePostFlag(true);
         props.setPostData({creator: props.postData.creator, title: props.postData.title, url: props.postData.url, message: props.postData.message, comments: newArray});
     }
-    console.log(props.postData.username);
-
+    
+console.log(props.username);
     return(
         <div className="py-5">
             <div className="card py-2 text-center" style={{height: "100px"}}>
@@ -54,10 +54,10 @@ const Comment = (props) => {
                         </>
                     }
                 </div>
-                {(user?.result?.username === props.postData?.username) && (
+                {(user?.result?.username === props?.username) && (
                 <button onClick={() => handleDelete()}>Delete</button>
                 )}
-                 {(user?.result?.username === props.postData?.username) && (
+                 {(user?.result?.username === props?.username) && (
                 <button onClick={() => handleUpdate()}>Update</button>
                  )}
             </div>

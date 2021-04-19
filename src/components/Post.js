@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { LOGIN_STATE } from '../reducers/storeConstants';
 
 const Post  = () => {
-    const [commentData, setCommentData] = useState({createdAt: new Date(), message: ''});
+    const [commentData, setCommentData] = useState({createdAt: new Date(), message: '', username:''});
     const [postData, setPostData] = useState({title: '', url: '', message: '', comments: []});
     const [updatePostFlag, setUpdatePostFlag] = useState(false);
     var {  id } = useParams();
@@ -19,7 +19,7 @@ const Post  = () => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
-    
+    console.log(user);
 
     useEffect(() =>{
         dispatch(getPostById(id));
@@ -40,6 +40,7 @@ const Post  = () => {
             if (postData) {
                 setUpdatePostFlag(false);
                 dispatch(updatePost(id, {...postData, name:user?.result?.name}));
+                // console.log(username);
             }
         }
     }, [dispatch, postData, id, updatePostFlag]);
@@ -47,7 +48,7 @@ const Post  = () => {
     
     const handleComment = () => {
       
-        dispatch(createComment(id, commentData));
+        dispatch(createComment(id, {...commentData, username:user?.result?.username}));
         dispatch(getPosts());
         clearForm();
     }
@@ -57,7 +58,7 @@ const Post  = () => {
     // }
 
     const clearForm = () => {
-        setCommentData({createdAt: new Date(), message: ''});
+        setCommentData({createdAt: new Date(), message: '', username: ''});
     }
 
     // if (!user?.result?.name){
@@ -92,7 +93,7 @@ const Post  = () => {
                 {
                     comments.map((comment, i) => {
                         return <div key={i} className="py-2">
-                                <Comment message={comment.message} createdAt={comment.createdAt} postId={id} commentId={comment.id} postData={postData} setPostData={setPostData} setUpdatePostFlag={setUpdatePostFlag}/>
+                                <Comment username={comment.username} message={comment.message} createdAt={comment.createdAt} postId={id} commentId={comment.id} postData={postData} setPostData={setPostData} setUpdatePostFlag={setUpdatePostFlag}/>
                             </div>
                     })
                 }

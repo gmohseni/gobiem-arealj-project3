@@ -36,7 +36,7 @@ const Comment = (props) => {
 console.log(props.username);
     return(
         <div className="py-5">
-            <div className="card py-2 text-center" style={{height: "100px"}}>
+            <div className="card py-2 text-center" style={{width: "400px", height: "100px"}}>
                 <p>{props.createdAt}</p>
                 <p>{props.message}</p>
                 <div>

@@ -10,12 +10,21 @@ const Thread  = (props) => {
         if(newWindow) newWindow.opener = null;
     }
 
+    const convertDate = () => {
+        let date = new Date(props.createdAt);
+        let month = date.getMonth();
+        let day = date.getDay();
+        let year = date.getFullYear();
+        let newDate = month + "/" + day + "/" + year;
+        return newDate;
+    }
+
     return(
-        <div>
+        <div className="text-center">
             {
                 (props.url === 'N/A' || props.url === 'NA' || props.url === '') ? 
                     <div>
-                        <Link to={"/post/" + props.id}>
+                        <Link className="thread-text thread-title" to={"/post/" + props.id} style={{textDecoration: "none"}}>
                             {props.title}
                         </Link>
                     </div>
@@ -23,16 +32,18 @@ const Thread  = (props) => {
                 <>
                 {
                     <div>
-                        <Link to={"/post/" + props.id}>
+                        <Link className="thread-text thread-title" to={"/post/" + props.id} style={{textDecoration: "none"}}>
                             <span onClick={() => openInNewTab()}>{props.title}</span>
                         </Link>
                     </div>
                 }
                 </>
                 }
-            <h5>{props.createdAt}</h5>
+            <h5>{convertDate()}</h5>
             <div>
-                <Link to={"/post/" + props.id}>Comments</Link>
+                <Link className="thread-text" to={"/post/" + props.id} style={{textDecoration: "none"}}>
+                    <button className="comments-button text-white">Comments</button>
+                </Link>
             </div>
         </div>
         )

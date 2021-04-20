@@ -3,11 +3,10 @@ import NavBar from './NavBar';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../actions/posts';
 import ThreadsList from './ThreadsList';
+import '../styles/style.css';
 
 
 const HomePage  = () => {
-  // current id?
-  // const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,11 +15,11 @@ const HomePage  = () => {
 
     return (
         <div>
-            <div>
-                <NavBar/>
-            </div>
-            <h3>Recent News</h3>
+          <NavBar/>
+          <div className="container-fluid background">
+            <h3>Recent Updates</h3>
             <ThreadsList/>
+          </div>
         </div>
     )
 }

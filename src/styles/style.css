@@ -1,4 +1,87 @@
-/* NavBar */ 
-/* .nav-bar {
-    justify-content: space-between;
-} */
+:root {
+    --main-maroon: #741c1b;
+    --main-black: #200d07;
+    --main-brown: #583a32;
+    --main-gray: #cbc1b8;
+    --main-light-blue: #add8e6;
+    --main-nude: #E3BC9A;
+    --main-green: #bab86c;
+
+    --main-light-grey: #cecbce;
+    --main-dark-grey: #7f7d7e;
+    --main-tan: #d0a792;
+    --main-light-tan: #e5cbbc;
+    --main-cream: #ece1da;
+    --main-mint-green: #bbc7ba;
+
+}
+
+.background {
+    background-color: var(--main-cream);
+    padding-top: 30px;
+    height: 100vh;
+    overflow: auto;
+}
+
+/* NavBar */
+
+.title {
+    margin:20px;
+}
+
+.nav-bar {
+    background-color: var(--main-mint-green);
+}
+
+.nav-link, .delete-button, .update-button, .add-comment {
+    background-color: var(--main-dark-grey);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.comments-button {
+    background-color: var(--main-maroon);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.nav-link:hover {
+    background-color: var(--main-black);
+}
+
+.nav-link:active {
+    background-color: var(--main-brown);
+}
+
+.user-profile {
+    position: absolute;
+    right: 0;
+}
+
+/* Threads */
+.thread, .post {
+    background-color: var(--main-light-tan);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+}
+
+.thread-text {
+    color: var(--main-black);
+    font-weight: bold;
+    font-size: large;
+}
+
+.thread-title, .post-title {
+    font-family: "Copperplate";
+    font-size: 35px;
+}
+
+.thread-text:hover {
+    color: var(--main-mint-green);
+}
+
+/* Post */
+.comment-input {
+    margin: 20px;
+}

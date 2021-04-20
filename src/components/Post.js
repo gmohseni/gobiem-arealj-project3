@@ -21,8 +21,6 @@ const Post  = () => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
-   
-
     useEffect(() =>{
         dispatch(getPostById(id));
     },[dispatch, id])
@@ -58,36 +56,55 @@ const Post  = () => {
     const clearForm = () => {
         setCommentData({createdAt: new Date(), message: '', username: ''});
     }
+
+    const convertDate = () => {
+        let date = new Date(postData.createdAt);
+        let month = date.getMonth();
+        let day = date.getDay();
+        let year = date.getFullYear();
+        let newDate = month + "/" + day + "/" + year;
+        return newDate;
+    }
    
     return(
         <div>
-            <div>
-                <NavBar/>
-            </div>
-            <h3>{postData.title}</h3>
-            <h5>{postData.message}</h5>
-            <h5>{postData.createdAt}</h5>
-            {
-                loginState === LOGIN_STATE.LOGGED_IN ?
-                <div>
-                    <label htmlFor="comment">Comment:</label>
-                    <input id="comment" type="text" placeholder="" 
-                    value={commentData.message} 
-                    onChange={(e) => setCommentData({ ...commentData, message: e.target.value })}/>
-                    <button disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
+            <NavBar/>
+            <div className="container-fluid background text-center">
+                <div className="row">
+                    <div className="col-sm-2"></div>
+                    <div className="col-sm-8">
+                        <div className="post">
+                            <h3 className="post-title">{postData.title}</h3>
+                            <h5>{convertDate()}</h5>
+                            <h5>{postData.message}</h5>
+                            {
+                                loginState === LOGIN_STATE.LOGGED_IN ?
+                                <div>
+                                    <div>
+                                        <label htmlFor="comment">Comment: </label>
+                                        <input className="comment-input" id="comment" type="text" placeholder="" 
+                                        value={commentData.message} 
+                                        onChange={(e) => setCommentData({ ...commentData, message: e.target.value })}/>
+                                    </div>
+                                    <button className="add-comment text-white" disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
+                                </div>
+                                :
+                                <>
+                                </>
+                            }
+                        </div>
+                    </div>
+                    <div className="col-sm-2"></div>
                 </div>
-                :
-                <>
-                </>
-            }
-            <div>
-                {
-                    comments.map((comment, i) => {
-                        return <div key={i} className="py-2">
-                                <Comment username={comment.username} message={comment.message} createdAt={comment.createdAt} postId={id} commentId={comment.id} postData={postData} setPostData={setPostData} setUpdatePostFlag={setUpdatePostFlag}/>
-                            </div>
-                    })
-                }
+                <div>
+                    {
+                        comments.map((comment, i) => {
+                            return <div key={i} className="py-2">
+                                    <Comment username={comment.username} message={comment.message} createdAt={comment.createdAt} postId={id} commentId={comment.id} postData={postData} setPostData={setPostData} setUpdatePostFlag={setUpdatePostFlag}/>
+                                </div>
+                        })
+                    }
+                </div>
             </div>
         </div>
         )

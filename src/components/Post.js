@@ -21,6 +21,7 @@ const Post  = () => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
+
     useEffect(() =>{
         dispatch(getPostById(id));
     },[dispatch, id])
@@ -34,7 +35,7 @@ const Post  = () => {
         else{
             history.push("/");
         }
-    }, [post]);
+    }, [post, history]);
 
     useEffect(() => {
         if (updatePostFlag) {
@@ -71,7 +72,10 @@ const Post  = () => {
                     <div className="col-sm-8">
                         <div className="post">
                             <div className="row">
-                                <div className="col-sm-9"></div>
+                                <div className="col-sm-3">
+                                    <h5><b>Author: {post?.username}</b></h5>
+                                </div>
+                                <div className="col-sm-6"></div>
                                 <div className="col-sm-3">
                                     <h5><b>{convertDate()}</b></h5>
                                 </div>
@@ -88,7 +92,15 @@ const Post  = () => {
                                         value={commentData.message}
                                         onChange={(e) => setCommentData({ ...commentData, message: e.target.value })}/>
                                     </div>
-                                    <button className="add-comment text-white" disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
+                                    <div>
+                                        {
+                                            (user?.result) ?
+                                            <button className="add-comment text-white" disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
+                                            :
+                                            <>
+                                            </>
+                                        }
+                                    </div>
                                 </div>
                                 :
                                 <>

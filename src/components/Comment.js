@@ -5,6 +5,7 @@ const Comment = (props) => {
     const [updatedMessage, setUpdatedMessage] = useState(props.message);
     const [showTextBox, setShowTextBox] = useState(false);
     const user = JSON.parse(localStorage.getItem('profile'));
+
     const handleDelete = () => {
         let newArray = [];
         for (let i = 0; i < props.postData.comments.length; i++) {
@@ -45,7 +46,10 @@ const Comment = (props) => {
                 <div className="col-sm-8">
                     <div className="comment">
                         <div className="row">
-                            <div className="col-sm-9"></div>
+                            <div className="col-sm-3">
+                                <p><b>Author: {props.username}</b></p>
+                            </div>
+                            <div className="col-sm-6"></div>
                             <div className="col-sm-3">
                                 <p><b>{convertDate()}</b></p>
                             </div>

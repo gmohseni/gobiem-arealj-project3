@@ -46,7 +46,7 @@
     margin: 10px;
 }
 
-.nav-link:hover {
+.nav-link:hover ,.delete-button:hover, .update-button:hover, .add-comment:hover, .submit-button:hover, .clear-button:hover, .show-password-button:hover, .comments-button:hover  {
     background-color: var(--main-black);
 }
 
@@ -90,7 +90,7 @@
 }
 
 .thread-text:hover {
-    color: var(--main-mint-green);
+    color: var(--main-maroon);
 }
 
 /* Post */

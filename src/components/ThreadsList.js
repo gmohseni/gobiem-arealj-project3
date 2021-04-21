@@ -36,7 +36,7 @@ const ThreadsList  = () => {
                     {
                         sortedPosts.map((post,i) => {
                             return <div className="thread" key={i}>
-                                <Thread title={post.title} id={post._id} url={post.url} createdAt={post.createdAt}/>
+                                <Thread username={post.username} title={post.title} id={post._id} url={post.url} createdAt={post.createdAt}/>
                                 {(user?.result?.username === post?.username) && (
                                 <Link to={"/home"}>
                                     <button className="delete-button text-white" onClick={() => handleClick(post._id)}>Delete</button>

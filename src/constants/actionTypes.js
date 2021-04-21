@@ -1,2 +1,12 @@
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+export const FETCH_COMMENTS = 'FETCH_COMMENTS';
+export const CREATE = 'CREATE';
+export const UPDATE = 'UPDATE';
+export const DELETE = 'DELETE';
+export const FETCH_BY_ID = 'FETCH_BY_ID';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const UNAVAILABLE_USERNAME = 'UNAVAILABLE_USERNAME';
+export const INVALID_LOGIN = 'INVALID_LOGIN';
+export const FETCH_USERS = 'FETCH_USERS';

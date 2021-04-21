@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 
 const Thread  = (props) => {
-    const user = JSON.parse(localStorage.getItem('profile'));
 
     const openInNewTab = () => {
         const newWindow = window.open(props.url, '_blank', 'noopener,noreferrer');
@@ -17,6 +16,15 @@ const Thread  = (props) => {
 
     return(
         <div className="text-center">
+            <div className="row">
+                <div className="col-sm-3">
+                    <h5><b>Author: {props.username}</b></h5>
+                </div>
+                <div className="col-sm-6"></div>
+                <div className="col-sm-3">
+                    <h5><b>{convertDate()}</b></h5>
+                </div>
+            </div>
             {
                 (props.url === 'N/A' || props.url === 'NA' || props.url === '') ? 
                     <div>
@@ -35,7 +43,6 @@ const Thread  = (props) => {
                 }
                 </>
                 }
-            <h5>{convertDate()}</h5>
             <div>
                 <Link className="thread-text" to={"/post/" + props.id} style={{textDecoration: "none"}}>
                     <button className="comments-button text-white">Comments</button>

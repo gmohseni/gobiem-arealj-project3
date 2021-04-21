@@ -40,4 +40,5 @@ export const updatePost = (id, post) => API.patch(`post/${id}`, post);
 export const deleteComment = (postId) => API.delete(`/post/${postId}`);
 export const signIn = (username, password) => API.post('/account/signin', username, password);
 export const signUp = (username, password) => API.post('/account/signup', username, password);
+export const fetchUsers = () => API.get('/account');
 

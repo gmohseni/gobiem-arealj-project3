@@ -1,17 +1,23 @@
 import * as api from '../api';
 
-import { AUTH } from '../constants/actionTypes';
+import { AUTH, FETCH_USERS, INVALID_LOGIN } from '../constants/actionTypes';
 
 export const signin = (formData, history) => async (dispatch) => {
-  
     try {
       const { data } = await api.signIn(formData);
-      
-      //once we get the data
       dispatch({ type: AUTH, data })
-  
       history.push('/');
     } catch (error) {
-      console.log(error);
+      dispatch({type: INVALID_LOGIN});
     }
   };
+
+export const fetchUsers = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchUsers();
+    console.log(data);
+    dispatch({ type: FETCH_USERS, data })
+  } catch (error) {
+    dispatch({type: INVALID_LOGIN});
+  }
+};

@@ -12,11 +12,7 @@ const Thread  = (props) => {
 
     const convertDate = () => {
         let date = new Date(props.createdAt);
-        let month = date.getMonth();
-        let day = date.getDay();
-        let year = date.getFullYear();
-        let newDate = month + "/" + day + "/" + year;
-        return newDate;
+        return date.toLocaleDateString();
     }
 
     return(

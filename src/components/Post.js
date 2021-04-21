@@ -59,11 +59,7 @@ const Post  = () => {
 
     const convertDate = () => {
         let date = new Date(postData.createdAt);
-        let month = date.getMonth();
-        let day = date.getDay();
-        let year = date.getFullYear();
-        let newDate = month + "/" + day + "/" + year;
-        return newDate;
+        return date.toLocaleDateString();
     }
    
     return(
@@ -74,16 +70,22 @@ const Post  = () => {
                     <div className="col-sm-2"></div>
                     <div className="col-sm-8">
                         <div className="post">
+                            <div className="row">
+                                <div className="col-sm-9"></div>
+                                <div className="col-sm-3">
+                                    <h5><b>{convertDate()}</b></h5>
+                                </div>
+                            </div>
                             <h3 className="post-title">{postData.title}</h3>
-                            <h5>{convertDate()}</h5>
                             <h5>{postData.message}</h5>
                             {
                                 loginState === LOGIN_STATE.LOGGED_IN ?
                                 <div>
+                                    <div className="comment-title">Comment: </div>
                                     <div>
-                                        <label htmlFor="comment">Comment: </label>
-                                        <input className="comment-input" id="comment" type="text" placeholder="" 
-                                        value={commentData.message} 
+                                        {/* <label htmlFor="comment" className="comment-title">Comment: </label> */}
+                                        <textarea className="comment-input" id="comment" type="text" placeholder="" 
+                                        value={commentData.message}
                                         onChange={(e) => setCommentData({ ...commentData, message: e.target.value })}/>
                                     </div>
                                     <button className="add-comment text-white" disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
@@ -96,6 +98,7 @@ const Post  = () => {
                     </div>
                     <div className="col-sm-2"></div>
                 </div>
+                <h3>Comments: </h3>
                 <div>
                     {
                         comments.map((comment, i) => {

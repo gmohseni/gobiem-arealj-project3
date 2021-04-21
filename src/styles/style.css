@@ -33,7 +33,7 @@
     background-color: var(--main-mint-green);
 }
 
-.nav-link, .delete-button, .update-button, .add-comment {
+.nav-link, .delete-button, .update-button, .add-comment, .submit-button, .clear-button, .show-password-button {
     background-color: var(--main-dark-grey);
     border-radius: 10px;
     margin: 10px;
@@ -42,6 +42,7 @@
 .comments-button {
     background-color: var(--main-maroon);
     border-radius: 10px;
+    border-color: var(--main-maroon);
     margin: 10px;
 }
 
@@ -54,13 +55,24 @@
 }
 
 .user-profile {
+    background-color: var(--main-black);
+    height: 50px;
+    border-radius: 30px;
+    margin: 10px;
     position: absolute;
     right: 0;
 }
 
 /* Threads */
-.thread, .post {
+.thread, .post, .create-post, .login, .signup {
     background-color: var(--main-light-tan);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+}
+
+.comment {
+    background-color: var(--main-tan);
     border-radius: 20px;
     padding: 20px;
     margin: 30px;
@@ -82,6 +94,11 @@
 }
 
 /* Post */
+
+/* .comment-title {
+    justify-content: left;
+} */
+
 .comment-input {
     margin: 20px;
 }

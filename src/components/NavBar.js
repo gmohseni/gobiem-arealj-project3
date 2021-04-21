@@ -53,7 +53,7 @@ const Navbar = () => {
                                 <button className="nav-link text-white" onClick={() => logout()}><b>Logout</b></button>
                             </li>
                             <li className="nav-item">
-                                <button className="nav-link text-white user-profile"><b>{user?.result?.username}</b></button>
+                                <button className="text-white user-profile"><b>{user?.result?.username}</b></button>
                             </li>
                         </ul>
                             ):(

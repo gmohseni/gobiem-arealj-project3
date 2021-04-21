@@ -32,34 +32,49 @@ const Comment = (props) => {
         props.setUpdatePostFlag(true);
         props.setPostData({creator: props.postData.creator, title: props.postData.title, url: props.postData.url, message: props.postData.message, comments: newArray});
     }
+
+    const convertDate = () => {
+        let date = new Date(props.createdAt);
+        return date.toLocaleDateString();
+    }
     
-console.log(props.username);
     return(
-        <div className="py-5">
-            <div className="card py-2 text-center" style={{width: "400px", height: "100px"}}>
-                <p>{props.createdAt}</p>
-                <p>{props.message}</p>
-                <div>
-                    {
-                        (showTextBox) ?
-                        <div>
-                            <label htmlFor="comment">Comment:</label>
-                            <input id="comment" type="text" placeholder="" 
-                            value={updatedMessage} 
-                            onChange={(e) => setUpdatedMessage(e.target.value)}/>
-                            <button onClick={() => submitUpdate()}>Submit</button>
+        <div>
+            <div className="row">
+                <div className="col-sm-2"></div>
+                <div className="col-sm-8">
+                    <div className="comment">
+                        <div className="row">
+                            <div className="col-sm-9"></div>
+                            <div className="col-sm-3">
+                                <p><b>{convertDate()}</b></p>
+                            </div>
                         </div>
-                        :
-                        <>
-                        </>
-                    }
+                        <p>{props.message}</p>
+                        <div>
+                            {
+                                (showTextBox) ?
+                                <div>
+                                    <label htmlFor="comment">Comment:</label>
+                                    <input id="comment" type="text" placeholder="" 
+                                    value={updatedMessage}
+                                    onChange={(e) => setUpdatedMessage(e.target.value)}/>
+                                    <button className="add-comment text-white" onClick={() => submitUpdate()}>Submit</button>
+                                </div>
+                                :
+                                <>
+                                </>
+                            }
+                        </div>
+                        {(user?.result?.username === props?.username) && (
+                        <button className="delete-button text-white" onClick={() => handleDelete()}>Delete</button>
+                        )}
+                        {(user?.result?.username === props?.username) && (
+                        <button className="update-button text-white" onClick={() => handleUpdate()}>Update</button>
+                        )}
+                    </div>
                 </div>
-                {(user?.result?.username === props?.username) && (
-                <button onClick={() => handleDelete()}>Delete</button>
-                )}
-                 {(user?.result?.username === props?.username) && (
-                <button onClick={() => handleUpdate()}>Update</button>
-                 )}
+                <div className="col-sm-2"></div>
             </div>
         </div>
         )

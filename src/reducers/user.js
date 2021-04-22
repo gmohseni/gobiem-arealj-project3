@@ -13,6 +13,7 @@ const User = (state = {authData: null, users: []}, action) =>{
         case actionType.UNAVAILABLE_USERNAME:
             return {...state};
         case actionType.INVALID_LOGIN:
+            console.log(state.users);
             return state;
         case actionType.FETCH_USERS:
             return {...state, users: action.data};

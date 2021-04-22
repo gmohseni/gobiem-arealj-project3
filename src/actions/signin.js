@@ -8,7 +8,13 @@ export const signin = (formData, history) => async (dispatch) => {
       dispatch({ type: AUTH, data })
       history.push('/');
     } catch (error) {
-      dispatch({type: INVALID_LOGIN});
+      // dispatch({type: INVALID_LOGIN});
+      if (error.response) {
+        console.log(error.response.data);
+        // dispatch({type: INVALID_LOGIN});
+        // console.log(error.response.status);
+        // console.log(error.response.headers);
+    }
     }
   };
 

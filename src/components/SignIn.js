@@ -9,13 +9,16 @@ export default function SignIn() {
     const users = useSelector(state => state.user.users);
     const [allUsers, setAllUsers] = useState([]);
     const history = useHistory();
-
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({username:'', password:''});
     const [showPassword, setShowPassword] = useState(false);
     const [submitError, setSubmitError] = useState(false);
 
-    console.log(allUsers);
+    const [success, setSuccess] = useState(false);
+
+  
+    // console.log(error.response.data);
+   
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -27,15 +30,16 @@ export default function SignIn() {
         }
     }, [users, setAllUsers])
 
-    const checkUserName = (user) => {
-        for (var i = 0; i < allUsers.length; i++) {
-            if (allUsers[i].username === user) {
-                return true;
-            }
-        }
-    }
+    // const checkUserName = (user) => {
+    //     for (var i = 0; i < allUsers.length; i++) {
+    //         if (allUsers[i].username === user) {
+    //             return true;
+    //         }
+    //     }
+    // }
 
     const handleSubmit = () => {
+
         dispatch(signin(formData, history));
         // if (!checkUserName(formData.username)) {
         //     dispatch(signin(formData, history));

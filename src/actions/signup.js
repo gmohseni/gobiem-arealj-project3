@@ -11,7 +11,8 @@ export const signup = (formData, history) => async (dispatch) => {
     } catch (error) {
       // dispatch({type: UNAVAILABLE_USERNAME});
       if (error.response) {
-        console.log(error.response.data);
+        console.log("HELLO");
+        console.log(error.response.data.message); // Dispatch this to update error message in the user reducer.
   }
 }
 };

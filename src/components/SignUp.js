@@ -18,12 +18,14 @@ export default function SignUp() {
     const authData = useSelector(state => state.user.authData);
     const user = JSON.parse(localStorage.getItem('profile'));
 
+    let u = {};
+
     useEffect(() => {
         if (authData) {
             console.log("IM HERE with AUTHDATA");
             console.log(authData.result.username);
             console.log(authData.result.password);
-            setCurrentUser({username: authData.result.username, password: authData.result.password});
+            u = {username: authData.result.username, password: authData.result.password};
         }
     },[authData])
 
@@ -68,6 +70,7 @@ export default function SignUp() {
         // setSubmitError(false);
     }
 
+    console.log(u);
     return(
         <div>
             <NavBar/>

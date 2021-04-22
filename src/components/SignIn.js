@@ -3,52 +3,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
 import { signin } from '../actions/signin';
-import { fetchUsers } from '../actions/signin';
+// import { fetchUsers } from '../actions/signin';
+import { CLEARERROR } from '../constants/actionTypes';
 
 export default function SignIn() {
     const users = useSelector(state => state.user.users);
-    const [allUsers, setAllUsers] = useState([]);
     const history = useHistory();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({username:'', password:''});
     const [showPassword, setShowPassword] = useState(false);
-    const [submitError, setSubmitError] = useState(false);
+    const errorMessage = useSelector(state => state?.user?.errorMessage);
+    const [error, setError] = useState(false);
 
-    const [success, setSuccess] = useState(false);
-
-  
-    // console.log(error.response.data);
-   
 
     useEffect(() => {
-        dispatch(fetchUsers());
-    }, [dispatch]);
-
-    useEffect(() => {
-        if (users) {
-            setAllUsers(users);
+        if (errorMessage.length > 0){
+            setError(true);
         }
-    }, [users, setAllUsers])
-
-    // const checkUserName = (user) => {
-    //     for (var i = 0; i < allUsers.length; i++) {
-    //         if (allUsers[i].username === user) {
-    //             return true;
-    //         }
-    //     }
-    // }
+     },[errorMessage]);
 
     const handleSubmit = () => {
 
         dispatch(signin(formData, history));
-        // if (!checkUserName(formData.username)) {
-        //     dispatch(signin(formData, history));
-        // } else {
-        //     setSubmitError(true);
-        // }
         setTimeout(() => {
             clear();
-        }, 3000);
+        }, 4000);
     }
 
     const onChange = (e) =>{
@@ -57,7 +36,8 @@ export default function SignIn() {
 
     const clear = () => {
         setFormData({username: '', password: ''});
-        setSubmitError(false);
+        setError(false);
+        dispatch({type: CLEARERROR});
     }
 
     return(
@@ -74,10 +54,10 @@ export default function SignIn() {
                 <div className="row">
                     <div className ="col-sm-2"></div>
                     <div className ="col-sm-8">
-                        <div>
+                    <div>
                             {
-                                (submitError) ?
-                                <div className="alert alert-danger">Invalid username or password, please correct and try again!</div>
+                                (error) ?
+                                <div className="alert alert-danger">{errorMessage}</div>
                                 :
                                 <>
                                 </>

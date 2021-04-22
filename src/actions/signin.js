@@ -1,6 +1,6 @@
 import * as api from '../api';
 
-import { AUTH, FETCH_USERS, INVALID_LOGIN } from '../constants/actionTypes';
+import { AUTH, FETCH_USERS, INVALID_LOGIN, ERROR } from '../constants/actionTypes';
 
 export const signin = (formData, history) => async (dispatch) => {
     try {
@@ -8,13 +8,11 @@ export const signin = (formData, history) => async (dispatch) => {
       dispatch({ type: AUTH, data })
       history.push('/');
     } catch (error) {
-      // dispatch({type: INVALID_LOGIN});
       if (error.response) {
-        console.log(error.response.data);
-        // dispatch({type: INVALID_LOGIN});
-        // console.log(error.response.status);
-        // console.log(error.response.headers);
-    }
+      const errorMessage = error.response.data.message  // Dispatch this to update error message in the user reducer.
+        dispatch({type: ERROR, errorMessage: errorMessage})
+        console.log(errorMessage);
+  }
     }
   };
 

@@ -23,9 +23,6 @@ export default function SignUp() {
         if (errorMessage.length > 0){
             setError(true);
         }
-     
-       
-
      },[authData, errorMessage]);
 
 
@@ -47,7 +44,6 @@ export default function SignUp() {
 
     const onChange = (e) =>{
         setFormData({...formData, [e.target.id]: e.target.value});
-        // setError(false);
     };
 
     return(

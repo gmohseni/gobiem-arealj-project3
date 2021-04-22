@@ -4,7 +4,6 @@ import * as actionType from '../constants/actionTypes';
 const User = (state = {authData: null, users: [], errorMessage: ""}, action) =>{
     switch(action.type){
         case actionType.AUTH:
-            // console.log(action?.data);
             localStorage.setItem('profile', JSON.stringify({...action?.data}));
             return {...state, authData: action?.data};
         case actionType.LOGOUT:
@@ -18,7 +17,6 @@ const User = (state = {authData: null, users: [], errorMessage: ""}, action) =>{
         case actionType.FETCH_USERS:
             return {...state, users: action.data};
         case actionType.ERROR:
-            // console.log(action.errorMessage);
             return {...state, errorMessage: action.errorMessage};
         case actionType.CLEARERROR:
             return {...state, errorMessage: ""};

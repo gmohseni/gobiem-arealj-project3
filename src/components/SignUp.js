@@ -15,30 +15,25 @@ export default function SignUp() {
     const userState = useSelector(state => state.user);
     const [currentUser, setCurrentUser] = useState({username:'', password:''});
     
-    const [flag, setFlag] = useState(false);
-
+    const authData = useSelector(state => state.user.authData);
     const user = JSON.parse(localStorage.getItem('profile'));
-    // console.log(user);
-    // console.log(user);
+
+    useEffect(() => {
+        if (authData) {
+            console.log("IM HERE with AUTHDATA");
+            console.log(authData.result.username);
+            console.log(authData.result.password);
+            setCurrentUser({username: authData.result.username, password: authData.result.password});
+        }
+    },[authData])
+
     const handleSubmit = () => {
-
-        setFlag(true);
-        let user = {}
         dispatch(signup(formData, history)).then((response) =>  {
-            user = JSON.parse(localStorage.getItem('profile'));
-            // const user = JSON.parse(localStorage.getItem('profile'));
-            // console.log(user);
-        })
-        console.log(user);
-            // const user = JSON.parse(localStorage.getItem('profile'));
-            // console.log(user);
-            
-           
-
-        
-        // const user = JSON.parse(localStorage.getItem('profile'));
-        // setCurrentUser({username: user.result.username, password: user.result.password});
-        // console.log(user);
+            // let user = JSON.parse(localStorage.getItem('profile'));
+            // userDetails = user;
+            // console.log(response);
+            //setCurrentUser({username: user.result.username, password: user.result.password});
+        });
         
         //setSubmitError(true);
         // if ((formData.username.length !== 0) && (formData.password.length !== 0)){
@@ -62,16 +57,6 @@ export default function SignUp() {
         //     clear();
         // }, 3000);
     }
-
-    useEffect(() =>{
-        const checkLocal = JSON.parse(localStorage.getItem('profile'));
-        // console.log(checkLocal);
-        if (checkLocal){
-            setCurrentUser({username: checkLocal.result.username, password: checkLocal.result.password});
-            // console.log(currentUser);
-        }
-        console.log(flag);
-    },[flag])
 
 
     const onChange = (e) =>{

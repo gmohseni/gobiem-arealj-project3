@@ -93,7 +93,7 @@ export default function SignIn() {
                     <div className="row">
                         <div className ="col-sm-1"></div>
                         <div className="col-sm-10 float-end">
-                                <button className="submit-button text-white" onClick={() => handleSubmit()}>Submit</button>
+                                <button className="submit-button text-white" disabled={formData.username.length === 0 || formData.password.length ===0} onClick={() => handleSubmit()}>Submit</button>
                                 <button className="clear-button text-white" onClick={() => clear()}>Clear</button>
                         </div>
                         <div className ="col-sm-1"></div>

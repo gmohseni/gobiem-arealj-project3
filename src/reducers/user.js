@@ -1,7 +1,7 @@
 import * as actionType from '../constants/actionTypes';
 
 
-const User = (state = {authData: null, users: []}, action) =>{
+const User = (state = {authData: null, users: [], errorMessage: ""}, action) =>{
     switch(action.type){
         case actionType.AUTH:
             console.log(action?.data);

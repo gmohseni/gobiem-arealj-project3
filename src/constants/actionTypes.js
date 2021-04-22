@@ -10,3 +10,5 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const UNAVAILABLE_USERNAME = 'UNAVAILABLE_USERNAME';
 export const INVALID_LOGIN = 'INVALID_LOGIN';
 export const FETCH_USERS = 'FETCH_USERS';
+export const ERROR = 'ERROR';
+export const CLEARERROR = 'CLEARERROR';

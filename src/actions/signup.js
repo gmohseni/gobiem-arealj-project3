@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { AUTH, UNAVAILABLE_USERNAME } from '../constants/actionTypes';
+import { AUTH, ERROR, UNAVAILABLE_USERNAME } from '../constants/actionTypes';
 
 export const signup = (formData, history) => async (dispatch) => {
   try {
@@ -11,8 +11,11 @@ export const signup = (formData, history) => async (dispatch) => {
     } catch (error) {
       // dispatch({type: UNAVAILABLE_USERNAME});
       if (error.response) {
-        console.log("HELLO");
-        console.log(error.response.data.message); // Dispatch this to update error message in the user reducer.
+        // console.log("HELLO");
+      const errorMessage = error.response.data.message  // Dispatch this to update error message in the user reducer.
+      //  console.log(errorMessage);
+        dispatch({type: ERROR, errorMessage: errorMessage})
+        console.log(errorMessage);
   }
 }
 };

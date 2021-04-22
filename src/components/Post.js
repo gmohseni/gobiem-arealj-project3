@@ -13,7 +13,6 @@ const Post  = () => {
     const [updatePostFlag, setUpdatePostFlag] = useState(false);
     var {  id } = useParams();
     const loginState = useSelector(state => state.login);
-    
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
     const [comments, setComments] = useState([]);
     const history = useHistory();

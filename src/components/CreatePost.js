@@ -82,7 +82,7 @@ const CreatePost  = () => {
                     <div className="col-sm-8">
                         {
                         (errorFlag) ?
-                        <div className="alert alert-danger">Can only have a URL or Text, not both!</div>
+                        <div className="alert alert-danger">Can only have a URL or Text, not both! Click Clear and try again</div>
                         : 
                         <>
                         </>
@@ -91,35 +91,41 @@ const CreatePost  = () => {
                     <div className="col-sm-2"></div>
                 </div>
                 <div className="create-post">
-                    <div className="row">
-                        <div className ="col-sm-1"></div>
-                        <div className="col-sm-10">
-                            <label htmlFor="Title">Title</label>
+                    <div className="row py-2">
+                        <div className ="col-sm-2">
+                        <h6 className="text-center">Title</h6>
+                        </div>
+                        <div className="col-sm-8">
                             <input id="Title" required type="text" placeholder="Title" value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })}></input>
                         </div>
-                        <div className ="col-sm-1"></div>
+                        <div className ="col-sm-2"></div>
                     </div>
                     <div className="row">
-                        <div className ="col-sm-1"></div>
-                        <div className="col-sm-10">
-                            <label htmlFor="URL">URL</label>
+                        <div className ="col-sm-2">
+                        <h6 className="text-center">URL</h6>
+                        </div>
+                        
+                        <div className="col-sm-8">
+                            
                             <textarea id="URL" type="text" placeholder="URL" cols="80" value={postData.url} onChange={(e) => checkURL(e.target.value)}></textarea>
                         </div>
-                        <div className ="col-sm-1"></div>
+                        <div className ="col-sm-2"></div>
                     </div>
                     <div className="row">
-                        <div className ="col-sm-1"></div>
-                        <div className="col-sm-10">
-                            <label htmlFor="Body">Body of Post</label>
+                        <div className ="col-sm-2">
+                            <h6 className="text-center">Body of Post</h6>
+                        </div>
+                        <div className="col-sm-8">
+                            
                             <textarea id="Body" type="text" placeholder="Body" cols="100" rows="5" value={postData.message} onChange={(e) => checkText(e.target.value)}></textarea>
                         </div>
-                        <div className ="col-sm-1"></div>
+                        <div className ="col-sm-2"></div>
                     </div>
                     <div className="row">
                         <div className ="col-sm-1"></div>
                         <div className="col-sm-10 float-end">
-                                <button className="submit-button text-white" disabled={errorFlag} onClick={() => handleSubmit()}>Submit</button>
-                                <button className="clear-button text-white" onClick={() => clear()}>Clear</button>
+                                <button type="button" className="btn submit-button text-white" disabled={errorFlag} onClick={() => handleSubmit()}>Submit</button>
+                                <button type="button" className="btn clear-button text-white" onClick={() => clear()}>Clear</button>
                         </div>
                         <div className ="col-sm-1"></div>
                     </div>

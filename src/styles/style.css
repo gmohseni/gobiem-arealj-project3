@@ -8,12 +8,16 @@
     --main-green: #bab86c;
 
     --main-light-grey: #cecbce;
-    --main-dark-grey: #7f7d7e;
+    /* --main-dark-grey: #7f7d7e; */
+    --main-dark-grey: #404040;
     --main-tan: #d0a792;
     --main-light-tan: #e5cbbc;
     --main-cream: #ece1da;
     --main-mint-green: #bbc7ba;
 
+}
+body{
+    font-family: "Copperplate";
 }
 
 .background {
@@ -55,12 +59,12 @@
 }
 
 .user-profile {
-    background-color: var(--main-black);
+    background-color: var(--main-maroon);
     height: 50px;
     border-radius: 30px;
     margin: 10px;
-    position: absolute;
-    right: 0;
+    /* position: absolute; 
+    right: 0; */
 }
 
 /* Threads */

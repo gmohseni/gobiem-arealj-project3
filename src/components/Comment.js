@@ -62,7 +62,7 @@ const Comment = (props) => {
                                     <input id="comment" type="text" placeholder="" 
                                     value={updatedMessage}
                                     onChange={(e) => setUpdatedMessage(e.target.value)}/>
-                                    <button className="add-comment text-white" onClick={() => submitUpdate()}>Submit</button>
+                                    <button type="button" className="btn add-comment text-white" onClick={() => submitUpdate()}>Submit</button>
                                 </div>
                                 :
                                 <>
@@ -70,10 +70,10 @@ const Comment = (props) => {
                             }
                         </div>
                         {(user?.result?.username === props?.username) && (
-                        <button className="delete-button text-white" onClick={() => handleDelete()}>Delete</button>
+                        <button type="button" className="btn delete-button text-white" onClick={() => handleDelete()}>Delete</button>
                         )}
                         {(user?.result?.username === props?.username) && (
-                        <button className="update-button text-white" onClick={() => handleUpdate()}>Update</button>
+                        <button type="button" className="btn update-button text-white" onClick={() => handleUpdate()}>Update</button>
                         )}
                     </div>
                 </div>

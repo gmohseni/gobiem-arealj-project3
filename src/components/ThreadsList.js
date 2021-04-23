@@ -38,12 +38,12 @@ const ThreadsList  = () => {
                                 <Thread username={post.username} title={post.title} id={post._id} url={post.url} createdAt={post.createdAt}/>
                                 {(user?.result?.username === post?.username) && (
                                 <Link to={"/home"}>
-                                    <button className="delete-button text-white" onClick={() => handleClick(post._id)}>Delete</button>
+                                    <button type="button" className="btn delete-button text-white" onClick={() => handleClick(post._id)}>Delete</button>
                                 </Link>
                                 )} 
                                 {(user?.result?.username === post?.username) && (
                                     <Link to={"/updatepost/" + post._id}>
-                                        <button className="update-button text-white">Update</button>
+                                        <button type="button" className="btn update-button text-white">Update</button>
                                     </Link>
                                 )} 
                                 </div>

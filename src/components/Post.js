@@ -84,7 +84,6 @@ const Post  = () => {
                                 <div>
                                     <div className="comment-title">Comment: </div>
                                     <div>
-                                        {/* <label htmlFor="comment" className="comment-title">Comment: </label> */}
                                         <textarea className="comment-input" id="comment" type="text" placeholder="" 
                                         value={commentData.message}
                                         onChange={(e) => setCommentData({ ...commentData, message: e.target.value })}/>
@@ -92,7 +91,7 @@ const Post  = () => {
                                     <div>
                                         {
                                             (user?.result) ?
-                                            <button className="add-comment text-white" disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
+                                            <button type="button" className="btn add-comment text-white" disabled={!user?.result} onClick={() => handleComment()}>Add Comment</button>
                                             :
                                             <>
                                             </>

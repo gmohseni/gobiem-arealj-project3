@@ -45,7 +45,7 @@ const Thread  = (props) => {
                 }
             <div>
                 <Link className="thread-text" to={"/post/" + props.id} style={{textDecoration: "none"}}>
-                    <button className="comments-button text-white">Comments</button>
+                    <button type="button" className="btn comments-button text-white">Comments</button>
                 </Link>
             </div>
         </div>

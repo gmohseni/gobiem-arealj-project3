@@ -11,6 +11,8 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
     const logout = () => {
         dispatch({ type: actionType.LOGOUT });
@@ -28,15 +30,15 @@ const Navbar = () => {
     }, [location]);
 
     return (
-        <nav className="nav-bar navbar navbar-expand">
+        <nav className="nav-bar navbar navbar-expand-lg">
                 <div className="container-fluid">
                 <FontAwesomeIcon icon={faTheaterMasks} size="4x"/>
-                    <h2 className="title">Theatrical Updates</h2>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
+                    <h2 className="title text-center">Theatrical Updates</h2>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={!isNavCollapsed ? true: false} aria-label="Toggle navigation" onClick={handleNavCollapse}> 
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
+                    <div className={`${isNavCollapsed ? 'collapse': ''}navbar-collapse text-center`} id="navbarSupportedContent">
+                        <ul className="navbar-nav justify-content-center" style={{flex: 1}}>
                             <li className="nav-item">
                                 <Link to={"/home"} style={{textDecoration: "none"}}>
                                     <button className="nav-link buttons text-white"><b>Home</b></button>

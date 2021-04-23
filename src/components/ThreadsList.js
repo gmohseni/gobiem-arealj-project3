@@ -5,7 +5,7 @@ import { deletePost, getPosts } from '../actions/posts';
 import Thread from './Thread';
 
 const ThreadsList  = () => {
-    const posts = useSelector((state) => state.posts);
+    const posts = useSelector((state) => state.posts.posts);
     const user = JSON.parse(localStorage.getItem('profile'));
     const [sortedPosts, setSortedPosts] = useState([]);
     const dispatch = useDispatch();
@@ -26,7 +26,6 @@ const ThreadsList  = () => {
             sortPostDate();
         }
     },[sortPostDate])
-
 
     return(
         <div className="text-center">

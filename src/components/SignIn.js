@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
 import { signin } from '../actions/signin';
-// import { fetchUsers } from '../actions/signin';
 import { CLEARERROR } from '../constants/actionTypes';
 
 export default function SignIn() {
-    const users = useSelector(state => state.user.users);
     const history = useHistory();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({username:'', password:''});

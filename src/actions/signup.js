@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { AUTH, ERROR, UNAVAILABLE_USERNAME } from '../constants/actionTypes';
+import { AUTH, ERROR } from '../constants/actionTypes';
 
 export const signup = (formData, history) => async (dispatch) => {
   try {

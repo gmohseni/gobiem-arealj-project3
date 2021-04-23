@@ -13,7 +13,7 @@ const Post  = () => {
     const [updatePostFlag, setUpdatePostFlag] = useState(false);
     var {  id } = useParams();
     const loginState = useSelector(state => state.login);
-    const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
+    const post = useSelector((state) => id ? state.posts.posts.find((p) => p._id === id) : null);
     const [comments, setComments] = useState([]);
     const history = useHistory();
 
@@ -22,6 +22,7 @@ const Post  = () => {
 
 
     useEffect(() =>{
+        dispatch(getPosts());
         dispatch(getPostById(id));
     },[dispatch, id])
 
@@ -30,9 +31,6 @@ const Post  = () => {
             setPostData(post);
             let sorted = post.comments.sort((a,b) => Date.parse(new Date(a.createdAt)) - Date.parse(new Date(b.createdAt)));
             setComments(sorted); 
-        }
-        else{
-            history.push("/");
         }
     }, [post, history]);
 

@@ -12,12 +12,9 @@ export default function SignUp() {
     const [formData, setFormData] = useState({ username:'', password:''});
     const [showPassword, setShowPassword] = useState(false);
 
-    
     const authData = useSelector(state => state?.user?.authData);
     const errorMessage = useSelector(state => state?.user?.errorMessage);
     const [error, setError] = useState(false);
-    
-
     
      useEffect(() => {
         if (errorMessage.length > 0){
@@ -33,14 +30,12 @@ export default function SignUp() {
         }, 4000);
     }
 
-    
     const clear = () => {
         setFormData({username: '', password: ''});
         setError(false);
         dispatch({type: CLEARERROR});
         
     };
-    console.log(error);
 
     const onChange = (e) =>{
         setFormData({...formData, [e.target.id]: e.target.value});

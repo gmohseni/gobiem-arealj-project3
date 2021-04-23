@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const Comment = (props) => {
     const [updatedMessage, setUpdatedMessage] = useState(props.message);
     const [showTextBox, setShowTextBox] = useState(false);

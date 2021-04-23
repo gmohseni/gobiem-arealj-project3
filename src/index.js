@@ -43,19 +43,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-// ReactDOM.render(
-//   <Router>
-//     <Switch>
-//       <Route exact path={"/"} component={App}/>
-//       <Route exact path={"/home"} component={Home}/>
-//       <Route exact path={"/login"} component={Login}/>
-//       <Route exact path={"/signup"} component={SignUp}/>
-//       <Route exact path={"/createpost"} component={CreatePost}/>
-//       <Route exact path={"/threads"} component={Threads}/>
-//       <Route render={() => <h1>Not found!</h1>} />
-//     </Switch>
-//   </Router>
-  
-//   ,document.getElementById('root')
-// );

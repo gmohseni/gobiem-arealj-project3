@@ -15,22 +15,7 @@ export const getPosts = () => async (dispatch) => {
 export const getPostById = (id) => async (dispatch) => {
     try{
         const { data } = await api.fetchPostById(id);
-        
         dispatch({ type: 'FETCH_BY_ID', payload: data});
-    } catch (error){
-        console.log(error.message);
-
-    }
-}
-
-export const getPostByAuthorAndTitle = (username, title) => async (dispatch) => {
-    try{
-        console.log(username);
-        console.log(title);
-        const { data } = await api.fetchPostByAuthor(username, title);
-        console.log("HERE");
-        console.log(data);
-        //dispatch({ type: 'FETCH_BY_ID', payload: data});
     } catch (error){
         console.log(error.message);
 
@@ -50,9 +35,6 @@ export const createPost = (post) => async (dispatch) =>{
 export const updatePost = (id, post) => async (dispatch) =>{
     try{
         const { data } = await api.updatePost(id, post);
-        const { posts } = await api.fetchPost();
-        console.log(data);
-        console.log(posts);
         dispatch({type: 'UPDATE', payload: data});
     } catch (error){
         console.log(error);
@@ -60,6 +42,14 @@ export const updatePost = (id, post) => async (dispatch) =>{
     }
 }
 
+export const clearCreatedPost = () => async (dispatch) =>{
+    try{
+        dispatch({type: 'CLEARCREATEDPOST'});
+    } catch (error){
+        console.log(error);
+        
+    }
+}
 
 export const deletePost = (id) => async (dispatch) => {
     try {

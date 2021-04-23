@@ -5,6 +5,7 @@ export const CREATE = 'CREATE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
 export const FETCH_BY_ID = 'FETCH_BY_ID';
+export const FETCH_BY_AUTHOR = 'FETCH_BY_AUTHOR';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const UNAVAILABLE_USERNAME = 'UNAVAILABLE_USERNAME';

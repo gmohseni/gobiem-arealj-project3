@@ -36,6 +36,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchPost = () => API.get('/post');
 export const fetchPostById = (id) => API.get(`/post/${id}`);
+export const fetchPostByAuthor = (username, title) => API.get(`/post/${username}/${title}`);
 export const createPost = (newPost) => API.post('/post', newPost);
 export const createComment = (id, newComment) => API.post(`/post/${id}`, newComment);
 export const deletePost = (id) => API.delete(`/post/${id}`);

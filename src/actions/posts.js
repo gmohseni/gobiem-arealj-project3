@@ -23,6 +23,20 @@ export const getPostById = (id) => async (dispatch) => {
     }
 }
 
+export const getPostByAuthorAndTitle = (username, title) => async (dispatch) => {
+    try{
+        console.log(username);
+        console.log(title);
+        const { data } = await api.fetchPostByAuthor(username, title);
+        console.log("HERE");
+        console.log(data);
+        //dispatch({ type: 'FETCH_BY_ID', payload: data});
+    } catch (error){
+        console.log(error.message);
+
+    }
+}
+
 export const createPost = (post) => async (dispatch) =>{
     try{
         const { data } = await api.createPost(post);

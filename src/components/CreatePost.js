@@ -1,17 +1,21 @@
 import NavBar from './NavBar';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost, updatePost } from '../actions/posts';
+import { createPost, updatePost, getPosts, getPostByAuthorAndTitle } from '../actions/posts';
 import { useParams } from "react-router-dom";
 
 const CreatePost  = () => {
     const [postData, setPostData] = useState({title: '', url: '', message: ''});
     const [errorFlag, setErrorFlag] = useState(false);
     var {id} = useParams();
+    const posts = useSelector(state => state.posts);
+    const [postsLength, setPostsLength] = useState(0);
     const post = useSelector((state) => id ? state.posts.find((p) => p._id === id) : null);
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
     
+    //console.log(posts);
+
     useEffect(() => {
         if (id === undefined){
             clear();
@@ -20,6 +24,12 @@ const CreatePost  = () => {
             setPostData(post);
         }
     }, [id, post]);
+
+    // useEffect(() => {
+    //     if (posts) {
+    //         setPostsLength(posts.length);
+    //     }
+    // }, [posts]);
 
     const checkURL = (url) => {
         if (postData.message.length > 0){
@@ -44,7 +54,10 @@ const CreatePost  = () => {
                 dispatch(updatePost(id, postData));
             }
             else if (id === undefined){
-                dispatch(createPost({...postData,username: user?.result?.username}));
+                dispatch(createPost({...postData,username: user?.result?.username})).then(() => {
+                    dispatch(getPosts());
+                    //dispatch(getPostByAuthorAndTitle(user?.result?.username, postData.title));
+                })
             }
          clear();
     }
